@@ -182,11 +182,21 @@ public class SinglyLinkedList<T> {
     
     //Reto #3
     public void reverseInPlace() {
-        if (head == null) {
-            return;
+        if (head == null || head.getNext() == null) {
+            return; //Si esta vacia o de un solo elemento, termina
         }
-        
-        
+
+        SimpleNode<T> previous = null;
+        SimpleNode<T> current = head;
+        tail = head;
+
+        while (current != null) {
+            SimpleNode<T> next = current.getNext(); //guarda el siguiente
+            current.setNext(previous);  //invierte el orden
+            previous = current;
+            current = next;
+        }
+        head = previous; //ultimo nodo visitado se vuele el head
     }
 
     /**

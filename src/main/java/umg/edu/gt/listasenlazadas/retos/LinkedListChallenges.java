@@ -19,6 +19,8 @@ public final class LinkedListChallenges {
         System.out.println();
         challenge2Clean();
         System.out.println();
+        challenge3ReverseInPlace();
+        System.out.println();
         challenge4RemoveDuplicates();
         System.out.println();
     }
@@ -62,6 +64,24 @@ public final class LinkedListChallenges {
             System.out.println("Resultado esperado - nodos eliminados: 5 | lista vacia: []  | size: 0");
             System.out.println("Resultado obtenido - nodos eliminados: " + eliminados
                     + " | lista vacia: " + eventos + " | size: " + eventos.size());
+        } catch (UnsupportedOperationException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private static void challenge3ReverseInPlace() {
+        SinglyLinkedList<Integer> numeros = new SinglyLinkedList<>();
+        numeros.addLast(2);
+        numeros.addLast(4);
+        numeros.addLast(5);
+        numeros.addLast(6);
+ 
+        System.out.println("Reto 3 - Invertir lista en el mismo objeto");
+        System.out.println("Lista antes de invertir: " + numeros);
+        try {
+            numeros.reverseInPlace();
+            System.out.println("Resultado esperado: [6, 5, 4, 2]");
+            System.out.println("Resultado obtenido: " + numeros);
         } catch (UnsupportedOperationException ex) {
             System.out.println(ex.getMessage());
         }
