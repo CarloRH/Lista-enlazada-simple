@@ -104,6 +104,8 @@ public class SinglyLinkedList<T> {
      * @param value valor a buscar
      * @return cantidad de ocurrencias encontradas
      */
+    
+    //Reto #1
     public int countOccurrences(T value) {
         int count = 0;
         SimpleNode<T> current = head;
@@ -137,8 +139,20 @@ public class SinglyLinkedList<T> {
      * @return cantidad de nodos eliminados
      */
     public int clean() {
-        throw new UnsupportedOperationException(
-                "TODO RETO: Implementar clean() en SinglyLinkedList.");
+        int count = 0;
+        SimpleNode<T> current = head;
+
+        while (current != null) {
+            SimpleNode<T> next = current.getNext();
+            current.setNext(null);
+            current = next;
+            count++;
+        }
+
+        head = null;
+        tail = null;
+        size = 0;
+        return count;
     }
 
     /**
