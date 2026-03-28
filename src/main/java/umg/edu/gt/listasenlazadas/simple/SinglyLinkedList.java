@@ -138,6 +138,8 @@ public class SinglyLinkedList<T> {
      *
      * @return cantidad de nodos eliminados
      */
+    
+    //Reto #2
     public int clean() {
         int count = 0;
         SimpleNode<T> current = head;
@@ -148,7 +150,7 @@ public class SinglyLinkedList<T> {
             current = next;
             count++;
         }
-
+        
         head = null;
         tail = null;
         size = 0;
@@ -177,9 +179,14 @@ public class SinglyLinkedList<T> {
      * - Lista con un elemento.
      * - Lista con varios elementos.
      */
+    
+    //Reto #3
     public void reverseInPlace() {
-        throw new UnsupportedOperationException(
-                "TODO RETO: Implementar reverseInPlace() en SinglyLinkedList.");
+        if (head == null) {
+            return;
+        }
+        
+        
     }
 
     /**
@@ -201,9 +208,35 @@ public class SinglyLinkedList<T> {
      *
      * @return cantidad de nodos eliminados por duplicados
      */
+    //Reto #4
     public int removeDuplicates() {
-        throw new UnsupportedOperationException(
-                "TODO RETO: Implementar removeDuplicates() en SinglyLinkedList.");
+        int removed = 0;
+        SimpleNode<T> outer = head;
+
+        while (outer != null) {
+            SimpleNode<T> runner = outer;
+
+            while (runner.getNext() != null) {
+            	//se comparan runner y outer
+                if (isSameValue(runner.getNext().getValue(), outer.getValue())) {
+                    SimpleNode<T> duplicate = runner.getNext();
+                    runner.setNext(duplicate.getNext());
+
+                    if (duplicate == tail) {
+                        tail = runner;
+                        }
+                    duplicate.setNext(null); //desconecta al duplicado
+                    size--;
+                    removed++;
+                } else {
+                    runner = runner.getNext(); //avanza si no elimino nada
+                }
+            }
+
+            outer = outer.getNext();
+        }
+
+        return removed;
     }
 
     @Override
